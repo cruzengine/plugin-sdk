@@ -1,0 +1,10 @@
+#include <cruz/plugins/plugin.h>
+#include <cruz/plugins/macros.h>
+
+class MyPlugin : public Cruz::Plugin {
+public:
+    void onLoad() override {
+    }
+};
+
+ENGINE_DECLARE_PLUGIN(MyPlugin)

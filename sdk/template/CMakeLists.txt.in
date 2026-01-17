@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.15)
+project({{PLUGIN_NAME}})
+
+set(ENGINE_PLUGIN_SDK_ROOT $ENV{ENGINE_PLUGIN_SDK_ROOT})
+list(APPEND CMAKE_MODULE_PATH "${ENGINE_PLUGIN_SDK_ROOT}/cmake")
+engine_add_plugin({{PLUGIN_NAME}})
