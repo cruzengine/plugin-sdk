@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 project({{PLUGIN_NAME}})
 
-set(ENGINE_PLUGIN_SDK_ROOT $ENV{ENGINE_PLUGIN_SDK_ROOT})
-list(APPEND CMAKE_MODULE_PATH "${ENGINE_PLUGIN_SDK_ROOT}/cmake")
-engine_add_plugin({{PLUGIN_NAME}})
+if(NOT DEFINED ENV{CRUZ_PLUGINSDK} OR "$ENV{CRUZ_PLUGINSDK}" STREQUAL "")
+    message(FATAL_ERROR "CRUZ_PLUGINSDK environment variable is not set. Please set it to the path of the Cruz Plugin SDK.")
+endif()
+
+set(CRUZ_PLUGINSDK $ENV{CRUZ_PLUGINSDK})
+list(APPEND CMAKE_MODULE_PATH "${CRUZ_PLUGINSDK}/cmake")
+cruz_add_plugin({{PLUGIN_NAME}})

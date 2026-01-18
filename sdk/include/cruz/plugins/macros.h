@@ -1,17 +1,17 @@
 #pragma once
 
-#if defined(ENGINE_PLUGIN_SHARED)
+#if defined(CRUZ_PLUGIN_SHARED)
 #if defined(_WIN32)
-#define ENGINE_PLUGIN_EXPORT __declspec(dllexport)
+#define CRUZ_PLUGIN_EXPORT __declspec(dllexport)
 #else
-#define ENGINE_PLUGIN_EXPORT __attribute__((visibility("default")))
+#define CRUZ_PLUGIN_EXPORT __attribute__((visibility("default")))
 #endif
 #else
-#define ENGINE_PLUGIN_EXPORT
+#define CRUZ_PLUGIN_EXPORT
 #endif
 
-#define ENGINE_DECLARE_PLUGIN(ClassName) \
-    extern "C" ENGINE_PLUGIN_EXPORT Engine::Plugin* CreatePlugin() { \
+#define CRUZ_DECLARE_PLUGIN(ClassName) \
+    extern "C" CRUZ_PLUGIN_EXPORT Cruz::Plugin* CreatePlugin() { \
         static ClassName plugin; \
         return &plugin; \
     }
